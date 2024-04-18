@@ -21,7 +21,7 @@ import {
 
 const Header = () => {
   return (
-    <header className='p-5 shadow-md flex justify-between'>
+    <header className='p-5 shadow-sm flex justify-between'>
       <div className='flex items-center gap-8'>
         <Image src='/logo.png' alt='logo' width={150} height={150} priority />
 
