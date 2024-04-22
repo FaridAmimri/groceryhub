@@ -1,6 +1,8 @@
 /** @format */
+'use client'
 
 import Image from 'next/image'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   CircleUserRound,
   LayoutGrid,
@@ -18,8 +20,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { publicRequest } from '@/utils/request'
+import { CategoryType } from '@/types/types'
 
 const Header = () => {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['categories'],
+    queryFn: () => fetch(publicRequest + 'categories').then((res) => res.json())
+  })
+
   return (
     <header className='p-5 shadow-sm flex justify-between'>
       <div className='flex items-center gap-8'>
@@ -35,10 +44,15 @@ const Header = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>Browse Category</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
-            <DropdownMenuItem>Subscription</DropdownMenuItem>
+            {data?.map((category: CategoryType) => (
+              <DropdownMenuItem
+                key={category.id}
+                className='flex gap-2 items-center cursor-pointer'
+              >
+                <Image src={category.icon} alt='icon' width={25} height={25} />
+                <h2 className='text-md'>{category.title}</h2>
+              </DropdownMenuItem>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
 
