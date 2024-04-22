@@ -63,6 +63,14 @@ model Category {
   products  Product[]
 }
 
+model Slide {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  name      String
+  image     String
+  type      String
+}
+
 model Product {
   id         String   @id @default(cuid())
   createdAt  DateTime @default(now())
