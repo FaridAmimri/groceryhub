@@ -5,3 +5,10 @@ export type CategoryType = {
     icon: string;
     slug: string;
 }
+
+export type SlideType = {
+    id: string;
+    name: string;
+    image: string;
+    type: string;
+}
