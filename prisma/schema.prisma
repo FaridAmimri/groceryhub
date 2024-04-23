@@ -74,10 +74,12 @@ model Slide {
 model Product {
   id         String   @id @default(cuid())
   createdAt  DateTime @default(now())
-  title      String
+  name       String
   desc       String
+  weight     Decimal
   img        String?
   price      Decimal
+  discount   Decimal
   isFeatured Boolean  @default(false)
   category   Category @relation(fields: [catSlug], references: [slug])
   catSlug    String
