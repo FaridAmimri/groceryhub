@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/carousel'
 import { SlideType } from '@/types/types'
 import { getData } from '@/utils/getData'
-import { publicRequest } from '@/utils/request'
 import Image from 'next/image'
 
 const Slider = async () => {

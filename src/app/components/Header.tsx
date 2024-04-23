@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { publicRequest } from '@/utils/request'
 import { CategoryType } from '@/types/types'
+import Link from 'next/link'
 
 const Header = () => {
   const { isLoading, error, data } = useQuery({
@@ -32,7 +33,9 @@ const Header = () => {
   return (
     <header className='p-5 shadow-sm flex justify-between'>
       <div className='flex items-center gap-8'>
-        <Image src='/logo.png' alt='logo' width={150} height={150} priority />
+        <Link href='/'>
+          <Image src='/logo.png' alt='logo' width={150} height={150} priority />
+        </Link>
 
         <DropdownMenu>
           <DropdownMenuTrigger>
