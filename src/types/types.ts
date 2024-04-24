@@ -18,9 +18,9 @@ export type ProductType = {
     name: string;
     desc: string;
     img: string;
-    weight: Number;
-    price: string;
-    discount: string;
+    weight: string;
+    price: number;
+    discount: number;
     isFeatured: boolean;
     category: string;
     catSlug: string;

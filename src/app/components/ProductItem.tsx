@@ -11,6 +11,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { ProductType } from '@/types/types'
+import ProductCard from '@/app/components/ProductCard'
 
 const ProductItem = ({ product }: { product: ProductType }) => {
   return (
@@ -48,7 +49,7 @@ const ProductItem = ({ product }: { product: ProductType }) => {
         <DialogContent>
           <DialogHeader>
             <DialogDescription>
-              {/* <ProductItemDetail product={product} /> */}
+              <ProductCard product={product} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
