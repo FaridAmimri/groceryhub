@@ -12,3 +12,16 @@ export type SlideType = {
     image: string;
     type: string;
 }
+
+export type ProductType = {
+    id: string;
+    name: string;
+    desc: string;
+    img: string;
+    weight: Number;
+    price: string;
+    discount: string;
+    isFeatured: boolean;
+    category: string;
+    catSlug: string;
+}
