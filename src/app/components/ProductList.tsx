@@ -4,8 +4,10 @@ import { ProductType } from '@/types/types'
 import { getData } from '@/utils/getData'
 import ProductItem from './ProductItem'
 
-const ProductList = async () => {
-  const productList: ProductType[] = await getData('products')
+const ProductList = async ({ catSlug }: { catSlug: string }) => {
+  const productList: ProductType[] = await getData(
+    catSlug ? `products?cat=${catSlug}` : 'products'
+  )
   return (
     <div className='mt-10'>
       <h2 className='text-green-600 font-bold text-2xl'>

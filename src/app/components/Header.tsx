@@ -48,13 +48,17 @@ const Header = () => {
             <DropdownMenuLabel>Browse Category</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {data?.map((category: CategoryType) => (
-              <DropdownMenuItem
-                key={category.id}
-                className='flex gap-2 items-center cursor-pointer'
-              >
-                <Image src={category.icon} alt='icon' width={25} height={25} />
-                <h2 className='text-md'>{category.title}</h2>
-              </DropdownMenuItem>
+              <Link key={category.id} href={`/category/${category.slug}`}>
+                <DropdownMenuItem className='flex gap-2 items-center cursor-pointer'>
+                  <Image
+                    src={category.icon}
+                    alt='icon'
+                    width={25}
+                    height={25}
+                  />
+                  <h2 className='text-md'>{category.title}</h2>
+                </DropdownMenuItem>
+              </Link>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
