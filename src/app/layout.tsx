@@ -3,6 +3,7 @@
 import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
 import './globals.css'
+import AuthProvider from '@/app/components/AuthProvider'
 import QueryProvider from '@/app/components/QueryProvider'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={outfit.className}>
-        <QueryProvider>
-          <Header />
-          {children}
-          <Footer />
-        </QueryProvider>
+        <AuthProvider>
+          <QueryProvider>
+            <Header />
+            {children}
+            <Footer />
+          </QueryProvider>
+        </AuthProvider>
       </body>
     </html>
   )

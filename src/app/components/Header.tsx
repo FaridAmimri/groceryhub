@@ -23,8 +23,12 @@ import {
 import { publicRequest } from '@/utils/request'
 import { CategoryType } from '@/types/types'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 
 const Header = () => {
+  const { data: session } = useSession()
+  console.log(session)
+
   const { isLoading, error, data } = useQuery({
     queryKey: ['categories'],
     queryFn: () => fetch(publicRequest + 'categories').then((res) => res.json())
@@ -73,7 +77,9 @@ const Header = () => {
           <ShoppingBag />
           <span>0</span>
         </h2>
-        <Button>Login</Button>
+        <Link href='/sign-in'>
+          <Button>Login</Button>
+        </Link>
       </div>
     </header>
   )
