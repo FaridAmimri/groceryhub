@@ -10,7 +10,7 @@ export default function Home() {
     <main className='p-10 px-16'>
       <Slider />
       <CategoryList />
-      <ProductList />
+      <ProductList catSlug='' />
       <Banner />
     </main>
   )
