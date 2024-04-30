@@ -4,7 +4,10 @@
  */
 
 const nextConfig = {
-  reactStrictMode: false
+  reactStrictMode: false,
+  images: {
+    domains: ['lh3.googleusercontent.com']
+  }
 }
 
 export default nextConfig
