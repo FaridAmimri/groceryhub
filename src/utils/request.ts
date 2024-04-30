@@ -1,1 +1,1 @@
-export const publicRequest = 'https://groceryhub-git-main-faridigital.vercel.app/api/'
+export const publicRequest = 'https://groceryhub.vercel.app/api/'
