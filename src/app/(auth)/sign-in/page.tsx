@@ -5,18 +5,15 @@ import { Input } from '@/components/ui/input'
 import { LoaderIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-// import { toast } from 'sonner'
-import { signIn } from '@/utils/auth'
 import GoogleSignIn from '@/app/components/GoogleSignIn'
 import EmailLink from '@/app/components/EmailLink'
-import { useSession } from 'next-auth/react'
+import { auth } from '@/utils/auth'
+import { redirect } from 'next/navigation'
 
-const SignInPage = () => {
-  // const [email, setEmail] = useState('')
+const SignInPage = async () => {
+  const session = await auth()
 
-  // const router = useRouter()
-  // const [loader, setLoader] = useState()
+  session && redirect('/')
 
   return (
     <div className='flex items-baseline justify-center my-20'>

@@ -31,7 +31,7 @@ import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 
 const Header = () => {
-  const { data: session } = useSession()
+  const { status, data: session } = useSession()
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['categories'],
@@ -81,14 +81,14 @@ const Header = () => {
           <ShoppingBag />
           <span>0</span>
         </h2>
-        {!session ? (
+        {status === 'unauthenticated' ? (
           <Link href='/sign-in'>
             <Button>Login</Button>
           </Link>
         ) : (
           <Popover>
             <PopoverTrigger>
-              {session.user?.image ? (
+              {session?.user?.image ? (
                 <Image
                   src={session.user.image}
                   alt='profile-image'
