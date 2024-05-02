@@ -1,10 +1,7 @@
 /** @format */
 
-import dynamic from 'next/dynamic'
 import { getData } from '@/utils/getData'
-const ProductList = dynamic(() => import('@/app/components/ProductList'), {
-  ssr: false
-})
+import ProductList from '@/app/components/ProductList'
 import { CategoryType } from '@/types/types'
 import Image from 'next/image'
 import Link from 'next/link'

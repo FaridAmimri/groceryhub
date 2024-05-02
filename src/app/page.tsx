@@ -8,10 +8,10 @@ import Banner from '@/app/components/Banner'
 export default function Home() {
   return (
     <main className='p-10 px-16'>
-      <Slider />
+      {/* <Slider />
       <CategoryList />
       <ProductList catSlug='' />
-      <Banner />
+      <Banner /> */}
     </main>
   )
 }
