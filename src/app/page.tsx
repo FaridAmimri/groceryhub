@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <main className='p-10 px-16'>
       <Slider />
-      {/* <CategoryList />
-      <ProductList catSlug='' /> */}
+      {/* <CategoryList /> */}
+      <ProductList catSlug='' />
       <Banner />
     </main>
   )
