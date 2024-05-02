@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button'
 const EmailLink = () => {
   return (
     <form
-      action={async (formData) => {
-        'use server'
-        await signIn('resend', formData)
-      }}
+      // action={async (formData) => {
+      //   'use server'
+      //   await signIn('resend', formData)
+      // }}
       className='flex flex-col gap-2'
     >
       <Input type='text' name='email' placeholder='name@example.com' />
