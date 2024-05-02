@@ -20,7 +20,7 @@ const CategoryPage = async ({ params }: { params: { catSlug: string } }) => {
       </h2>
       {/* Category List */}
       <div className='flex gap-5 mt-2 overflow-auto mx-7 md:mx-20 justify-center'>
-        {categoryList.map((category) => (
+        {categoryList?.map((category) => (
           <Link
             key={category.id}
             href={`/category/${category.slug}`}
