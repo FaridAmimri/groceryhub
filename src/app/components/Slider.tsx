@@ -17,7 +17,7 @@ const Slider = async () => {
   return (
     <Carousel>
       <CarouselContent>
-        {sliderList.map((slider) => (
+        {sliderList?.map((slider) => (
           <CarouselItem key={slider.id}>
             <Image
               src={slider.image}
