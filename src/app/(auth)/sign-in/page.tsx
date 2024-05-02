@@ -12,6 +12,7 @@ import { redirect } from 'next/navigation'
 
 const SignInPage = async () => {
   const session = await auth()
+  console.log(session)
 
   session && redirect('/')
 
