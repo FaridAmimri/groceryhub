@@ -12,9 +12,8 @@ import { redirect } from 'next/navigation'
 
 const SignInPage = async () => {
   const session = await auth()
-  console.log(session)
 
-  session && redirect('/')
+  // session && redirect('/')
 
   return (
     <div className='flex items-baseline justify-center my-20'>

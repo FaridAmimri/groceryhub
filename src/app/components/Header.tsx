@@ -32,7 +32,6 @@ import { useSession, signOut } from 'next-auth/react'
 
 const Header = () => {
   const { status, data: session } = useSession()
-  console.log(status)
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['categories'],
