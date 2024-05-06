@@ -55,10 +55,7 @@ const CartPage = () => {
             {product.img && (
               <Image src={product.img} alt='' width={100} height={100} />
             )}
-            <div className=''>
-              <h1 className='uppercase text-xl font-bold'>{product.title}</h1>
-              <span>{product.optionTitle}</span>
-            </div>
+            <h1 className='uppercase text-xl font-bold'>{product.title}</h1>
             <h2 className='font-bold'>{product.price} €</h2>
             <h3 className='font-bold'>{product.quantity} </h3>
             <span

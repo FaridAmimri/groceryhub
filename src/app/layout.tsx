@@ -7,6 +7,7 @@ import AuthProvider from '@/app/components/AuthProvider'
 import QueryProvider from '@/app/components/QueryProvider'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
+import { Toaster } from 'sonner'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <QueryProvider>
             <Header />
             {children}
+            <Toaster />
             <Footer />
           </QueryProvider>
         </AuthProvider>

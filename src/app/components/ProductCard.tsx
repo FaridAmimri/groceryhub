@@ -5,18 +5,36 @@ import { Button } from '@/components/ui/button'
 import { LoaderCircle, ShoppingBasket } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductType } from '@/types/types'
+import { useCartStore } from '@/utils/store'
+import { toast } from 'sonner'
 
 const ProductCard = ({ product }: { product: ProductType }) => {
-  const router = useRouter()
-  // const context = useContext()
-
   const [loading, setLoading] = useState(false)
   const [price, setPrice] = useState(
     product.discount ? product.discount : product.price
   )
   const [quantity, setQuantity] = useState(1)
+  const [total, setTotal] = useState(product.price)
+
+  const router = useRouter()
+  const { addToCart } = useCartStore()
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate() // Avoid rehydration error from SSR to CSR
+  }, [])
+
+  const handleClick = () => {
+    addToCart({
+      id: product.id,
+      title: product.name,
+      img: product.img,
+      price: price * quantity,
+      quantity: quantity
+    })
+    toast('Product added successfully')
+  }
 
   return (
     <div
@@ -65,7 +83,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
           <Button
             className='flex gap-3'
-            // onClick={() => addToCart()}
+            onClick={() => handleClick()}
             // disabled={loading}
           >
             <ShoppingBasket />

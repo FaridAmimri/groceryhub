@@ -41,7 +41,6 @@ export type CartItemType = {
     title: string;
     img?: string;
     price: number;
-    optionTitle?: string;
     quantity: number;
 }
 

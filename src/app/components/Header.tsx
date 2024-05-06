@@ -30,6 +30,7 @@ import Link from 'next/link'
 // import { useSession, signOut } from 'next-auth/react'
 import { auth, signOut } from '@/utils/auth'
 import { getData } from '@/utils/getData'
+import CartIcon from './CartIcon'
 
 const Header = async () => {
   // const { status, data: session } = useSession()
@@ -80,10 +81,7 @@ const Header = async () => {
         </div>
       </div>
       <div className='flex gap-5 items-center'>
-        <Link href='/cart' className='flex gap-2 items-center text-lg'>
-          <ShoppingBag />
-          <span>0</span>
-        </Link>
+        <CartIcon />
         {!session ? (
           <Link href='/sign-in'>
             <Button>Login</Button>
