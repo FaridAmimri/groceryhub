@@ -1,8 +1,7 @@
 /** @format */
-'use client'
 
 import Image from 'next/image'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+// import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   CircleUserRound,
   LayoutGrid,
@@ -25,18 +24,22 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover'
-import { publicRequest } from '@/utils/request'
+// import { publicRequest } from '@/utils/request'
 import { CategoryType } from '@/types/types'
 import Link from 'next/link'
-import { useSession, signOut } from 'next-auth/react'
+// import { useSession, signOut } from 'next-auth/react'
+import { auth, signOut } from '@/utils/auth'
+import { getData } from '@/utils/getData'
 
-const Header = () => {
-  const { status, data: session } = useSession()
+const Header = async () => {
+  // const { status, data: session } = useSession()
+  const session = await auth()
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['categories'],
-    queryFn: () => fetch(publicRequest + 'categories').then((res) => res.json())
-  })
+  // const { isLoading, error, data } = useQuery({
+  //   queryKey: ['categories'],
+  //   queryFn: () => fetch(publicRequest + 'categories').then((res) => res.json())
+  // })
+  const categoryList: CategoryType[] = await getData('categories')
 
   return (
     <header className='p-5 shadow-sm flex justify-between'>
@@ -55,7 +58,7 @@ const Header = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>Browse Category</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {data?.map((category: CategoryType) => (
+            {categoryList?.map((category: CategoryType) => (
               <Link key={category.id} href={`/category/${category.slug}`}>
                 <DropdownMenuItem className='flex gap-2 items-center cursor-pointer'>
                   <Image
@@ -77,11 +80,11 @@ const Header = () => {
         </div>
       </div>
       <div className='flex gap-5 items-center'>
-        <h2 className='flex gap-2 items-center text-lg'>
+        <Link href='/cart' className='flex gap-2 items-center text-lg'>
           <ShoppingBag />
           <span>0</span>
-        </h2>
-        {status === 'unauthenticated' ? (
+        </Link>
+        {!session ? (
           <Link href='/sign-in'>
             <Button>Login</Button>
           </Link>
@@ -112,17 +115,19 @@ const Header = () => {
               <ul className='flex  flex-col gap-2'>
                 <Link
                   href={'/my-booking'}
-                  className='cursor-pointer
-             hover:bg-slate-100 p-2 rounded-md'
+                  className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'
                 >
-                  My Booking
+                  My orders
                 </Link>
-                <li
-                  className='cursor-pointer
-             hover:bg-slate-100 p-2 rounded-md'
-                  onClick={() => signOut()}
-                >
-                  Logout
+                <li className='cursor-pointer hover:bg-slate-100 p-2 rounded-md'>
+                  <form
+                    action={async () => {
+                      'use server'
+                      await signOut()
+                    }}
+                  >
+                    <button type='submit'>Logout</button>
+                  </form>
                 </li>
               </ul>
             </PopoverContent>
