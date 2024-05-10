@@ -25,7 +25,7 @@ export const useCartStore = create(persist<CartType & ActionTypes>((set, get) =>
                         ...item,
                         quantity: product.quantity + item.quantity,
                         price: product.price + item.price
-                    } : item
+                    } : product
             )
             set((state) => ({
                 products: updatedProducts,
